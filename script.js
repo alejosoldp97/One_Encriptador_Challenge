@@ -6,7 +6,7 @@ function encriptarTexto() {
         .replace(/a/g, "ai")
         .replace(/o/g, "ober")
         .replace(/u/g, "ufat");
-    
+
     mostrarResultado(textoEncriptado);
 }
 
@@ -18,23 +18,22 @@ function desencriptarTexto() {
         .replace(/ai/g, "a")
         .replace(/ober/g, "o")
         .replace(/ufat/g, "u");
-    
+
     mostrarResultado(textoDesencriptado);
 }
 
 function mostrarResultado(texto) {
-    const mensajeSuperior = document.getElementById('mensajeSuperior');
-    const mensajeInferior = document.getElementById('mensajeInferior');
+    const mensajeInicial = document.querySelector('.mensaje_inicial');
+    const resultadoDiv = document.querySelector('.resultado');
     const resultadoTexto = document.getElementById('resultadoTexto');
-    
-    if (texto) {
-        mensajeSuperior.textContent = 'Mensaje encriptado';
-        mensajeInferior.textContent = '';
+
+    if (texto.trim() !== '') {
+        mensajeInicial.classList.add('ocultar');
+        resultadoDiv.classList.remove('ocultar');
         resultadoTexto.value = texto;
     } else {
-        mensajeSuperior.textContent = 'Ningún mensaje fue encontrado';
-        mensajeInferior.textContent = 'Ingresa el texto que desees encriptar o desencriptar.';
-        resultadoTexto.value = '';
+        mensajeInicial.classList.remove('ocultar');
+        resultadoDiv.classList.add('ocultar');
     }
 }
 
